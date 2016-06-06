@@ -1,0 +1,19 @@
+<h1><%= @user.username %></h1>
+
+<% @user.goals.each do |goal| %>
+  <% if goal.user_id == current_user.id || !goal.private %>
+    <%= link_to goal.title, goal_url(goal) %><br>
+    <%= goal.completed ? "Completed!" : "In Progress" %><br>
+    <%= goal.description %><br>
+    <%= button_to "Update Goal", edit_goal_url(goal), method: :get %><br>
+    <%= button_to "Destroy Goal :(", goal_url(goal), method: :delete %><br>
+  <% end %>
+<% end %>
+
+<br><br>
+<br><br>
+
+Add Goal:
+<br>
+
+<%= render "goals/form", goal: Goal.new %>
