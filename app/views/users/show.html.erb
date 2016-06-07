@@ -17,3 +17,13 @@ Add Goal:
 <br>
 
 <%= render "goals/form", goal: Goal.new %>
+
+<br><br>
+
+<% @user.comments.each do |comment| %>
+<%= comment.content %><br>
+<% end %>
+<br><br>
+Comment on User:
+
+<%= render "comments/form", user: @user %>
